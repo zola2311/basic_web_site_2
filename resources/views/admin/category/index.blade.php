@@ -49,7 +49,7 @@
                                     <th scope="row"> {{ $categories->firstItem()+$loop->index  }}</th>
 {{--                                    <th scope="row">{{$i}}@php($i++) </th>--}}
                                     <td> {{ $category->category_name }} </td>
-                                    <td> {{ $category->user->name }} </td>
+                                    <td> {{ $category->name }} </td>
 {{--                                    <td> {{ $category->user_id }} </td>--}}
                                     <td>
                                         @if($category->created_at ==  NULL)

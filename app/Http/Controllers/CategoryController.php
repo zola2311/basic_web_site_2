@@ -15,17 +15,17 @@ class CategoryController extends Controller
         // by using eloquent orm read data
 //         $categories = Category::all();
          //making latest data appear first
-                $categories = Category::latest()->paginate(5);
+//                $categories = Category::latest()->paginate(5);
                 //using query builder method with pagination
 //         $categories = DB::table('categories')->latest()->
-         return view('admin.category.index', compact('categories'));
+//         return view('admin.category.index', compact('categories'));
+//query builder method
+         $categories = DB::table('categories')
+                 ->join('users','categories.user_id','users.id')
+                 ->select('categories.*','users.name')
+                 ->latest()->paginate(5);
 
-        // $categories = DB::table('categories')
-        //         ->join('users','categories.user_id','users.id')
-        //         ->select('categories.*','users.name')
-        //         ->latest()->paginate(5);
-
-
+        return view('admin.category.index', compact('categories'));
 //        $categories = Category::latest()->paginate(5);
 //        $trachCat = Category::onlyTrashed()->latest()->paginate(3);
 
