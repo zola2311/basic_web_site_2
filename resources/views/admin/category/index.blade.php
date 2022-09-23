@@ -24,6 +24,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
+
                         @endif
 
 
@@ -41,32 +43,35 @@
                             </tr>
                             </thead>
                             <tbody>
-{{--                            <!-- @php($i = 1) -->--}}
-{{--                            @foreach($categories as $category)--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row"> {{ $categories->firstItem()+$loop->index  }} </th>--}}
-{{--                                    <td> {{ $category->category_name }} </td>--}}
-{{--                                    <td> {{ $category->user->name }} </td>--}}
-{{--                                    <td>--}}
-{{--                                        @if($category->created_at ==  NULL)--}}
-{{--                                            <span class="text-danger"> No Date Set</span>--}}
-{{--                                        @else--}}
-{{--                                            {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}--}}
-{{--                                        @endif--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-info">Edit</a>--}}
-{{--                                        <a href="{{ url('softdelete/category/'.$category->id) }}" class="btn btn-danger">Delete</a>--}}
-{{--                                    </td>--}}
+                            <!-- @php($i = 1) -->
+                            @foreach($categories as $category)
+                                <tr>
+                                    <th scope="row"> {{ $categories->firstItem()+$loop->index  }}</th>
+{{--                                    <th scope="row">{{$i}}@php($i++) </th>--}}
+                                    <td> {{ $category->category_name }} </td>
+                                    <td> {{ $category->user->name }} </td>
+{{--                                    <td> {{ $category->user_id }} </td>--}}
+                                    <td>
+                                        @if($category->created_at ==  NULL)
+                                            <span class="text-danger"> No Date Set</span>
+                                        @else
+                                            {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-info">Edit</a>
+                                        <a href="{{ url('softdelete/category/'.$category->id) }}" class="btn btn-danger">Delete</a>
+                                    </td>
 
 
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
+                                </tr>
+                            @endforeach
 
 
                             </tbody>
                         </table>
-{{--                        {{ $categories->links() }}--}}
+{{--   for pagination--}}
+                        {{ $categories->links() }}
 
                     </div>
                 </div>
@@ -90,8 +95,7 @@
                                     @enderror
 
                                 </div>
-
-                                <button type="submit" class="btn btn-primary">Add Category</button>
+                                <button type="submit" class="btn btn-outline-primary">Add Category</button>
                             </form>
 
                         </div>
