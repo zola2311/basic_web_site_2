@@ -30,13 +30,13 @@ class CategoryController extends Controller
 
 
         $categories = Category::latest()->paginate(5);
-        return view('admin.category.index', compact('categories'));
-//        $trachCat = Category::onlyTrashed()->latest()->paginate(3);
+//        return view('admin.category.index', compact('categories'));
+       $trachCat = Category::onlyTrashed()->latest()->paginate(3);
 
         // $categories = DB::table('categories')->latest()->paginate(5);
 //        return view('admin.category.index');
 
-//        return view('admin.category.index', compact('categories','trachCat'));
+       return view('admin.category.index', compact('categories','trachCat'));
     }
     public function AddCat(Request $request){
         $validatedData = $request->validate([
@@ -96,21 +96,21 @@ class CategoryController extends Controller
     }
 //
 //
-//    public function SoftDelete($id){
-//        $delete = Category::find($id)->delete();
-//        return Redirect()->back()->with('success','Category Soft Delete Successfully');
-//    }
+    public function SoftDelete($id){
+        $delete = Category::find($id)->delete();
+        return Redirect()->back()->with('success','Category Soft Delete Successfully');
+    }
 //
 //
-//    public function Restore($id){
-//        $delete = Category::withTrashed()->find($id)->restore();
-//        return Redirect()->back()->with('success','Category Restore Successfully');
-//
-//    }
-//
-//    public function Pdelete($id){
-//        $delete = Category::onlyTrashed()->find($id)->forceDelete();
-//        return Redirect()->back()->with('success','Category Permanently Deleted');
-//    }
+    public function Restore($id){
+        $delete = Category::withTrashed()->find($id)->restore();
+        return Redirect()->back()->with('success','Category Restore Successfully');
+
+    }
+
+    public function Pdelete($id){
+        $delete = Category::onlyTrashed()->find($id)->forceDelete();
+        return Redirect()->back()->with('success','Category Permanently Deleted');
+    }
 
 }

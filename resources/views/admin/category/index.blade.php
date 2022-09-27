@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
 
-            All Category<b>  </b>
+            All brand<b>  </b>
 
 
         </h2>
@@ -47,10 +47,10 @@
                             @foreach($categories as $category)
                                 <tr>
                                     <th scope="row"> {{ $categories->firstItem()+$loop->index  }}</th>
-{{--                                    <th scope="row">{{$i}}@php($i++) </th>--}}
+                                    {{--                                    <th scope="row">{{$i}}@php($i++) </th>--}}
                                     <td> {{ $category->category_name }} </td>
                                     <td> {{ $category->user->name }} </td>
-{{--                                    <td> {{ $category->user_id }} </td>--}}
+                                    {{--                                    <td> {{ $category->user_id }} </td>--}}
                                     <td>
                                         @if($category->created_at ==  NULL)
                                             <span class="text-danger"> No Date Set</span>
@@ -136,32 +136,32 @@
                             </tr>
                             </thead>
                             <tbody>
-{{--                            <!-- @php($i = 1) -->--}}
-{{--                            @foreach($trachCat as $category)--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row"> {{ $categories->firstItem()+$loop->index  }} </th>--}}
-{{--                                    <td> {{ $category->category_name }} </td>--}}
-{{--                                    <td> {{ $category->user->name }} </td>--}}
-{{--                                    <td>--}}
-{{--                                        @if($category->created_at ==  NULL)--}}
-{{--                                            <span class="text-danger"> No Date Set</span>--}}
-{{--                                        @else--}}
-{{--                                            {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}--}}
-{{--                                        @endif--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-info">Restore</a>--}}
-{{--                                        <a href="{{ url('pdelete/category/'.$category->id) }}" class="btn btn-danger">P Delete</a>--}}
-{{--                                    </td>--}}
+                            <!-- @php($i = 1) -->
+                            @foreach($trachCat as $category)
+                                <tr>
+                                    <th scope="row"> {{ $categories->firstItem()+$loop->index  }} </th>
+                                    <td> {{ $category->category_name }} </td>
+                                    <td> {{ $category->user->name }} </td>
+                                    <td>
+                                        @if($category->created_at ==  NULL)
+                                            <span class="text-danger"> No Date Set</span>
+                                        @else
+                                            {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-info">Restore</a>
+                                        <a href="{{ url('pdelete/category/'.$category->id) }}" class="btn btn-danger">P Delete</a>
+                                    </td>
 
 
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
+                                </tr>
+                            @endforeach
 
 
                             </tbody>
                         </table>
-{{--                        {{ $trachCat->links() }}--}}
+                        {{ $trachCat->links() }}
 
                     </div>
                 </div>
