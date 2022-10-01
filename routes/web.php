@@ -19,6 +19,9 @@ use App\Models\User;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
@@ -53,8 +56,8 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 //Route::post('/update/homeabout/{id}', [AboutController::class, 'UpdateAbout']);
 //Route::get('/about/delete/{id}', [AboutController::class, 'DeleteAbout']);
 //// Multi Image Route
-//Route::get('/multi/image', [BrandController::class, 'Multpic'])->name('multi.image');
-//Route::post('/multi/add', [BrandController::class, 'StoreImg'])->name('store.image');
+Route::get('/multi/image', [BrandController::class, 'Multpic'])->name('multi.image');
+Route::post('/multi/add', [BrandController::class, 'StoreImg'])->name('store.image');
 //// Admin Contact Page Route
 //Route::get('/admin/contact', [ContactController::class, 'AdminContact'])->name('admin.contact');
 //Route::get('/admin/add/contact', [ContactController::class, 'AdminAddContact'])->name('add.contact');
